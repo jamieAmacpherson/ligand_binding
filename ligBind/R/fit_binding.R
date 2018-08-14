@@ -24,9 +24,11 @@ normalisedat = function(datavec) {
 
 ## Fiting function
 fit_binding = function(bindingdat, kd_pred, prot_conc){
+
+	bindingdat = as.data.frame(cbind(bindingdat[,1], normalisedat(bindingdat[,2])))
 	
 	# rename the dataframe columns
-	names(prot_conc) = c("L", "obs")
+	names(bindingdat) = c("L", "obs")
 		
 	# Constrain the free protein concentration to the input value 	
 	Po = prot_conc
@@ -44,7 +46,7 @@ fit_binding = function(bindingdat, kd_pred, prot_conc){
         	
 		# Constrain the kd, Spl and Sp
 		lower = c(kd_pred * 0.1, 0, 0),   
-        upper = c(kd_pred * 10, 1, 0), 
+        upper = c(kd_pred * 10, 1, 1), 
         	
 		# Verbose output
 		algorithm="port",
