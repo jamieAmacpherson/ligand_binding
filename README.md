@@ -1,3 +1,4 @@
 # ligand_binding
 
-https://zenodo.org/badge/latestdoi/144726159
+
+https://zenodo.org/badge/144726159.svg
