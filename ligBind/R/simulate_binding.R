@@ -7,11 +7,13 @@
 #' @param kd Theoretical 'true' binding affinity between the protein and the ligand
 #' @param prot_conc The concentration of the free receptor in the titration
 #' @param npoints The number of points in the ligand titration.
+#' @param minimum ligand concentration
+#' @param maximum ligand concentration
 #' @return fit.nls.summary List containing a summary of the fitted data.
 #' @export 
 
 
-simtitr = function(kd, prot_conc, npoints) {
+simtitr = function(kd, prot_conc, npoints, Lmin, Lmax) {
 	
 	## initialise spectra signals for protein and protein-ligand complex
 	Sp = 1
@@ -19,8 +21,6 @@ simtitr = function(kd, prot_conc, npoints) {
 
     ## simulated data using the Martin equation
     Po = prot_conc
-    Lmin = 0.01
-    Lmax=Po*100
     Lo = emdbook::lseq(Lmin, Lmax, npoints)
     kd.pred = kd
 

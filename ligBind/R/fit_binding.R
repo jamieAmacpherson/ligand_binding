@@ -42,12 +42,12 @@ fit_binding = function(bindingdat, kd_pred, prot_conc){
 	# Non-linear least squares fitting of above equation
     fit.nls = nls(fiteq,
         data=bindingdat,
-        start=list(kd.cal=kd_pred, Spl=1, Sp=0), 
+        start=list(kd.cal=kd_pred, Spl=1, Sp=0.5), 
         	
 		# Constrain the kd, Spl and Sp
 		lower = c(kd_pred * 0.1, 0, 0),   
-        upper = c(kd_pred * 10, 1, 1), 
-        	
+        #upper = c(kd_pred * 10, 1, 1), 
+        upper = c(kd_pred * 10, 1000, 1000),	
 		# Verbose output
 		algorithm="port",
         trace=T)
