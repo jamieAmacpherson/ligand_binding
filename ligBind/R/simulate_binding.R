@@ -35,7 +35,7 @@ simtitr = function(kd, prot_conc, npoints, Lmin, Lmax) {
 
     ## noise added to the binding data
     noisey.nobs = normobs + rnorm(length(normobs), sd=0.025)
-
+    
     titr = as.data.frame(cbind(Lo, noisey.nobs))
         
     ## fit the simulated binding data
